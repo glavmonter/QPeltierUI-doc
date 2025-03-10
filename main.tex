@@ -8,6 +8,8 @@
 %use our custom fancy header definitions
 % \pagestyle{fancy}
 
+\tableofcontents
+\newpage
 
 \section{Установка}
 
@@ -48,8 +50,38 @@
     \item \textit{Temperature Loop\arrow T set} - температура стабилизации в режиме Стабилизатор температуры
 \end{itemize}
 
-
+\newpage
 \subsection{Вкладка Common}
 
+На вкладке выбирается режим работы контроллера и сохранение настроек. Внешний вид вкладки на рисунке \ref{fig:init}..
+Режимы работы:
+\begin{enumerate}
+    \item \textit{Stopped} - контроллер остановлен, выходной ток отсутсвует
+    \item \textit{Current Source} - режим стабилизатора тока
+    \item \textit{Temperature} - режим стабилизатора температуры
+    \item \textit{Debug} - отладочный режим
+\end{enumerate}
+
+\subsection{Current Loop - стабилизатор тока}
+
+На вкладке настраивается петля регулировки выходного тока и установка тока в режиме Стабилизатора тока.
+
+Внешний вид вкладки:
+
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[clip,width=0.5\linewidth]{002-Current.png}}
+    \caption{Вкладка \textit{Current Loop}}
+    \label{fig:current}
+\end{figure}
+
+Поля ввода \textit{PID x} отвечают за коэффициенты пропорционально-интегрально-дифференциального регулятора тока.
+
+Поле \textit{WindUp} отвечает за ограничение интегральной составляющей регулятора.
+
+Поле \textit{Current} задаёт и считывает ток стабилизации в режиме Стабилизатор тока или только считывает
+ток в режиме Стабилизатор температуры.
+
+При включение режима "Стабилизатор тока" уставка тока задается как 0 А.
 
 \end{document}
