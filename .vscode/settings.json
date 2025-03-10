@@ -1,0 +1,4 @@
+{
+    "latex-workshop.docker.enabled": true,
+    "latex-workshop.docker.image.latex": "peltier/latex:1.1"
+}

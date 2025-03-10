@@ -1,0 +1,55 @@
+\documentclass[10pt,a4paper]{article}
+
+\input{common/packages.tex}
+\input{common/style.tex}
+\input{common/commands.tex}
+
+\begin{document}
+%use our custom fancy header definitions
+% \pagestyle{fancy}
+
+
+\section{Установка}
+
+Ещё не известно как.
+
+\section{Использование}
+
+\subsection{Общий вид}
+
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[clip,width=0.8\linewidth]{001-Begin.png}}
+    \caption{Внешний вид окна приложения}
+    \label{fig:init}
+\end{figure}
+
+Окно программы на рисунке \ref{fig:init}.
+
+\textbf{\textit{Раздел 1}} отвечает за выбор порта подключения. Выпадающий список содержит все доступные последовательные порты и пункт "Refresh"
+для обновления списка. Подключаемые порты программа не видит "налету". требуется нажатие на выпадающий пунки "Refresh".
+Пока подключения нет, остальные поля не активны.
+
+\textbf{\textit{Раздел 2}} отвечает за настройки, выбор режимов работы. Переключать вкладки можно, однако поля будут активны, если подключен контроллер.
+
+\textbf{\textit{Раздел 3, Раздел 4}} графики температуры, напряжени и тока, а также из текущие значения.
+
+\subsection{Управление настройками}
+
+Поля ввода имеют как минимум одну кнопку \textit{Get} или две кнопки \textit{Get}/\textit{Set} для получения или записи значения в контроллер.
+
+Практически все значения хранятся в ОЗУ и сбрасываются на начальные при включение. Если требуется сохранить значение в энергонезависимой памяти,
+то необходимо нажать кнопку \textit{Common\arrow Save Settings }
+
+Список полей, которые не сохраняются в энергонезависимой памяти:
+\begin{itemize}
+    \item \textit{Common\arrow Mode} - режим работы контроллера
+    \item \textit{Current Loop\arrow Current} - выходной ток в режиме Стабилизатор тока
+    \item \textit{Temperature Loop\arrow T set} - температура стабилизации в режиме Стабилизатор температуры
+\end{itemize}
+
+
+\subsection{Вкладка Common}
+
+
+\end{document}

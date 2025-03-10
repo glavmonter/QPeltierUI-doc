@@ -1,0 +1,69 @@
+\usepackage[utf8]{inputenc}
+
+% \usepackage{subcaption}
+\usepackage[caption = false]{subfig}
+\usepackage{hyperref}
+
+% set font default
+% \renewcommand*\familydefault{\sfdefault} 	
+\usepackage[T2A,T1]{fontenc}
+\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage{libertine}
+
+
+% more font size definitions
+\usepackage{moresize}
+
+%define page styles using geometry
+\usepackage[a4paper]{geometry}		
+
+%use customized header
+\usepackage{fancyhdr}				
+% \pagestyle{fancy}
+
+%----------------------------------------------------------------------------------------
+%	TABLE /ARRAY DEFINITIONS
+%---------------------------------------------------------------------------------------- 
+
+%for layouting tables
+\usepackage{multicol}			
+\usepackage{multirow}
+
+%extended aligning of tabular cells
+\usepackage{array}
+
+\newcolumntype{x}[1]{%
+>{\raggedleft\hspace{0pt}}p{#1}}%
+
+%----------------------------------------------------------------------------------------
+%	GRAPHICS DEFINITIONS
+%---------------------------------------------------------------------------------------- 
+
+%for header image
+% \usepackage{graphicx}
+
+%for floating figures
+\usepackage{wrapfig}
+\usepackage{float}
+%\floatstyle{boxed} 
+%\restylefloat{figure}
+
+%for drawing graphics		
+\usepackage{tikz}				
+\usetikzlibrary{shapes, backgrounds,mindmap, trees}
+
+
+%----------------------------------------------------------------------------------------
+%	Color DEFINITIONS
+%---------------------------------------------------------------------------------------- 
+
+\usepackage{color}
+
+%accent color
+\definecolor{sectcol}{RGB}{255,150,0}
+
+%dark background color
+\definecolor{bgcol}{RGB}{110,110,110}
+
+%light background / accent color
+\definecolor{softcol}{RGB}{225,225,225}

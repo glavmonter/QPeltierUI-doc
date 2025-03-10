@@ -1,0 +1,43 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "options": {
+        // Specify the cross compiler and arch in environment variable for all tasks
+        "env": {
+        }
+    },
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "build_image.sh",
+            "command": "${workspaceFolder}/scripts/build_image.sh",
+            "args": [],
+            "problemMatcher": [],
+            "group": {
+                "isDefault": false
+            }
+        },
+        {
+            "type": "shell",
+            "label": "run_container.sh",
+            "command": "${workspaceFolder}/scripts/run_container.sh",
+            "args": [],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Build",
+            "command": "${workspaceFolder}/scripts/build_pdf.sh",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
