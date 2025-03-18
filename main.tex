@@ -62,7 +62,7 @@
     \item \textit{Debug} - отладочный режим
 \end{enumerate}
 
-\subsection{Current Loop - стабилизатор тока}
+\subsection{Current Loop - стабилизатор тока}\label{sec:Current}
 
 На вкладке настраивается петля регулировки выходного тока и установка тока в режиме Стабилизатора тока.
 
@@ -70,7 +70,7 @@
 
 \begin{figure}[H]
     \centering
-    \subfloat{\includegraphics[clip,width=0.5\linewidth]{002-Current.png}}
+    \subfloat{\includegraphics[clip,width=0.4\linewidth]{002-Current.png}}
     \caption{Вкладка \textit{Current Loop}}
     \label{fig:current}
 \end{figure}
@@ -83,5 +83,120 @@
 ток в режиме Стабилизатор температуры.
 
 При включение режима "Стабилизатор тока" уставка тока задается как 0 А.
+
+Параметры ПИД регулятора тока:
+
+\begin{tabular}{|l|l|}
+    \hline
+    Параметр & Значение \\ \hline
+    PID P & 0.5 \\ \hline
+    PID I & 0.08 \\ \hline
+    PID D & 0 \\ \hline
+    WindUp & 0.04 \\ \hline
+\end{tabular}
+
+С такими параметрами есть небольшое перерегулирование.
+
+Результаты стабилизации тока 100 мА:
+\begin{figure}[h!]
+    \begin{minipage}{0.59\textwidth}
+        \centering
+        \subfloat{\includegraphics[clip,width=1.0\linewidth]{003-Current-sample.png}}
+        \caption{10 секунд стабилизации тока}    
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \begin{table}[H]
+            \begin{tabular}{|l|l|}
+                \hline
+                Параметр & Значение \\ \hline
+                Среднее & $99,49 \  \text{мА}$ \\ \hline
+                Стандартное отклонение & $1,224 \ \text{мА}$ \\ \hline
+                Дисперсия & $1,5\cdot 10^{-6} \text{A}^2$ \\ \hline
+            \end{tabular}
+            \caption{Статистика работы}
+        \end{table}
+    \end{minipage}
+\end{figure}
+
+\newpage
+\subsection{Temperature Loop - стабилизатор температуры}\label{sec:Temperature}
+
+На вкладке настраивается петля регулировки температуры стабилиции и установка температуры в режиме Стабилизатора температуры.
+
+Внешний вид вкладки:
+
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[clip,width=0.4\linewidth]{004-Temperature.png}}
+    \caption{Вкладка \textit{Temperature Loop}}
+    \label{fig:temperature}
+\end{figure}
+
+Поле выбора \textit{NTC 10k} отвечает за тип терморезистора в петле регулирования.
+
+Поля ввода \textit{PID x} отвечают за коэффициенты пропорционально-интегрально-дифференциального регулятора температуры.
+
+Поле \textit{WindUp} отвечает за ограничение интегральной составляющей регулятора.
+
+Параметры ПИД регулятора настраиваются индивидуально под каждый термоэлектрический преобразователь.
+
+При включение режима "Стабилизатор температуры" уставка температуры задается как текущая температура датчика.
+
+Результаты стабилизации темпуратуры 30 С:
+\begin{figure}[h!]
+    \begin{minipage}{0.59\textwidth}
+        \centering
+        \subfloat{\includegraphics[clip,width=0.9\linewidth]{005-Temperature-sample.png}}
+        \caption{10 секунд стабилизации температуры}    
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \begin{table}[H]
+            \begin{tabular}{|l|l|}
+                \hline
+                Параметр & Значение \\ \hline
+                Среднее & $29,999 \  \text{С}$ \\ \hline
+                Стандартное отклонение & $0,001 \ \text{С}$ \\ \hline
+                Дисперсия & $1,1\cdot 10^{-6} \text{С}^2$ \\ \hline
+            \end{tabular}
+            \caption{Статистика работы}
+        \end{table}
+    \end{minipage}
+\end{figure}
+
+% \newpage
+\subsection{Automat - скорость нагрева/охлаждения}
+
+На вкладке настраиваются скорость нагрева и охлаждения в К/минуту.
+
+Внешний вид вкладки:
+
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[clip,width=0.4\linewidth]{006-Speed.png}}
+    \caption{Вкладка \textit{Automat}}
+\end{figure}
+
+\subsection{Limits - предельные значения}\label{sec:Limits}
+
+На вкладке настраиваются предельные рабочие значения для термоэлектрических преобразователей.
+
+Внешний вид вкладки:
+
+\begin{figure}[H]
+    \centering
+    \subfloat{\includegraphics[clip,width=0.4\linewidth]{007-Limits.png}}
+    \caption{Вкладка \textit{Automat}}
+\end{figure}
+
+В подразделе \textit{TEC Limits} заносятся паспортные значения для преобразователя. 
+Этими лимитами ограничиваются выходные воздействия ПИД регуляторов.
+
+Отдельное поле ввода \textit{Current Limit} - это пороговый ток аварийного программного отключения.
+При нормальной работе он должен быть больше чем максимальные ограниченния преобразователя, взятые по модуля.
+
+\input{work}
+\input{tunning.tex}
 
 \end{document}
