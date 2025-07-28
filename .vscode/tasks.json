@@ -10,9 +10,19 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "build_image.sh",
-            "command": "${workspaceFolder}/scripts/build_image.sh",
-            "args": [],
+            "label": "build_image",
+            "linux": {
+                "command": "${workspaceFolder}/scripts/build_image.sh"
+            },
+            "windows": {
+                "command": "powershell",
+                "args": [
+                    "-ExecutionPolicy",
+                    "Bypass",
+                    "-File",
+                    "${workspaceFolder}\\scripts\\build_image.ps1"
+                ]
+            },
             "problemMatcher": [],
             "group": {
                 "isDefault": false
@@ -20,9 +30,19 @@
         },
         {
             "type": "shell",
-            "label": "run_container.sh",
-            "command": "${workspaceFolder}/scripts/run_container.sh",
-            "args": [],
+            "label": "run_container",
+            "linux": {
+                "command": "${workspaceFolder}/scripts/run_container.sh"
+            },
+            "windows": {
+                "command": "powershell",
+                "args": [
+                    "-ExecutionPolicy",
+                    "Bypass",
+                    "-File",
+                    "${workspaceFolder}\\scripts\\run_container.ps1"
+                ]
+            },
             "problemMatcher": [],
             "group": {
                 "kind": "build",
@@ -31,8 +51,19 @@
         },
         {
             "type": "shell",
-            "label": "Build",
-            "command": "${workspaceFolder}/scripts/build_pdf.sh",
+            "label": "build_pdf",
+            "linux": {
+                "command": "${workspaceFolder}/scripts/build_pdf.sh"
+            },
+            "windows": {
+                "command": "powershell",
+                "args": [
+                    "-ExecutionPolicy",
+                    "Bypass",
+                    "-File",
+                    "${workspaceFolder}\\scripts\\build_pdf.ps1"
+                ]
+            },
             "group": {
                 "kind": "build",
                 "isDefault": true
