@@ -90,18 +90,21 @@
 
 Выходное напряжение вычисляется по формуле:
 \begin{equation}
-    V_{Iout} = 20 \cdot V_{Iin} + \frac{AVCC}{2}
+    V_{Iout} = Gain \cdot V_{Iin} + \frac{3V3\_LDO}{2}
 \end{equation}
 
 С учетом АЦП 12 бит и ФНЧ итоговая формула вычисления тока ТЭП:
-
-\begin{verbatim}
-float ConvertToCurrent(float raw_adc, float offset, bool *overflow) {
-(void)overflow;
-    float v = raw_adc / ADC_RESOLUTION * ADC_REFERENCE;
-    return (v - CURRENT_SENSE_REFERENCE / 2.0f) / (CURRENT_GAIN * SHUNT_RESISTANCE) - offset;
-}
-\end{verbatim}
+\begin{equation}
+    I_P = \frac{3V3\_LDO}{Gain \cdot Rs} \left(\frac{ADdata_{s12} - 2^{11}}{2^{12}}\right)    
+\end{equation}
+Где:
+\begin{itemize}[label={}]
+    \item $I_P$ - ток через ТЭП, ампер
+    \item 3V3\_LDO - опорное напряжение АЦП, +3,3 В
+    \item Gain - усиление AD8418A, 20 раз
+    \item Rs - сопротивление шунта R12, R13: 0.005 Ом
+    \item $ADdata_{s12}$ - код АЦП, 12 бит
+\end{itemize}
 
 \subsubsection{Измерение температуры}
 
